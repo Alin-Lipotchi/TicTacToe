@@ -1,0 +1,199 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto Mono", monospace;
+}
+
+body {
+    background: #b4b4d4;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Text */
+
+h1 {
+    text-align: center;
+    margin: 1rem;
+    color: #333;
+}
+
+.turn {
+    text-align: center;
+    margin: 2rem;
+    text-decoration: underline;
+    color: #333;
+}
+
+.reset-button {
+    margin: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    border: 2px #333 solid;
+    background: rgb(125, 125, 167);
+    width: 100px;
+    box-shadow: rgba(46, 46, 170, 0.4) 0px 5px, rgba(46, 46, 170, 0.3) 0px 10px,
+        rgba(46, 46, 170, 0.2) 0px 15px, rgba(46, 46, 170, 0.1) 0px 20px,
+        rgba(46, 46, 170, 0.05) 0px 25px;
+    transition: 0.2s ease-in-out all;
+}
+
+.reset-button:hover {
+    background: rgb(78, 78, 113);
+    color: #eee;
+    transform: scale(1.1);
+}
+
+/* Overlay */
+
+.overlay {
+    z-index: 1;
+    background: rgba(33, 33, 33, 0.5);
+    width: 320px;
+    height: 200px;
+    position: absolute;
+    margin-top: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+        rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    display: none;
+}
+
+.result {
+    color: #eee;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.overlay-reset-button {
+    margin: auto;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    border: 2px #333 solid;
+    background: #eee;
+    width: 100px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+        rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+        rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    transition: 0.2s ease-in-out all;
+}
+
+.overlay-reset-button:hover {
+    background: rgb(78, 78, 113);
+    color: #eee;
+    transform: scale(1.1);
+}
+
+/* Main Box */
+
+.main-box {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    position: relative;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.check-box {
+    background: rgb(125, 125, 167);
+    flex-shrink: 0;
+    flex-basis: calc(100% / 3);
+    border: 1px solid black;
+    position: relative;
+    transition: background-color 0.15s ease-in-out;
+}
+
+.check-box:hover {
+    background: rgb(78, 78, 113);
+}
+
+/* X Element */
+
+.x-element {
+    display: none;
+}
+
+.x-element::before {
+    content: "";
+    background: #333;
+    height: 70px;
+    width: 5px;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 15%;
+    left: 50%;
+    border-radius: 2px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+        rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.x-element::after {
+    content: "";
+    background: #333;
+    height: 5px;
+    width: 70px;
+    position: absolute;
+    transform: rotate(45deg);
+    top: 50%;
+    left: 15%;
+    border-radius: 2px;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+        rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+/* O Element */
+
+.o-element {
+    display: none;
+}
+
+.o-element::before {
+    content: "";
+    background: #333;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    top: 15px;
+    left: 15px;
+    border-radius: 50%;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+        rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+        rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.o-element::after {
+    content: "";
+    background: #333;
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 20px;
+    left: 20px;
+    border-radius: 50%;
+    background: rgb(125, 125, 167);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
