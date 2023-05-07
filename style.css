@@ -31,8 +31,23 @@ h1 {
 .turn {
     text-align: center;
     margin: 2rem;
+    padding-bottom: 1rem;
     text-decoration: underline;
     color: #333;
+    position: relative;
+    width: 200px;
+}
+
+.o-turn,
+.x-turn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity ease-in-out 0.3s;
+}
+
+.o-turn {
+    opacity: 0;
 }
 
 .reset-button {
@@ -131,7 +146,8 @@ h1 {
 /* X Element */
 
 .x-element {
-    display: none;
+    opacity: 0;
+    transition: all ease-in-out 0.2s;
 }
 
 .x-element::before {
@@ -167,7 +183,8 @@ h1 {
 /* O Element */
 
 .o-element {
-    display: none;
+    opacity: 0;
+    transition: all ease-in-out 0.2s;
 }
 
 .o-element::before {
@@ -186,7 +203,6 @@ h1 {
 
 .o-element::after {
     content: "";
-    background: #333;
     position: absolute;
     width: 60px;
     height: 60px;
