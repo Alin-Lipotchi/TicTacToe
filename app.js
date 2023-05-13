@@ -6,6 +6,9 @@ const xTurn = $(".x-turn");
 const overlay = $(".overlay");
 const overlayBackground = $(".overlay-background");
 const result = $(".result");
+const winningLineYAxis = $(".winning-line-y-axis");
+const winningLineXAxis = $(".winning-line-x-axis");
+const winningLineDiagAxis = $(".winning-line-diag-axis");
 let locationArr = [
     [0, 0, 0],
     [0, 0, 0],
@@ -44,10 +47,14 @@ checkBoxes.each((i, box) => {
             xTurn.css("opacity", "1");
             oTurn.css("opacity", "0");
         }
-        if (progress === 9) {
-            result.text("It's a Draw!");
-            displayOverlay();
-        } else if (progress > 4) {
+        if (progress > 4) {
+            // Draw
+
+            if (progress === 9) {
+                result.text("It's a Draw!");
+                displayOverlay();
+            }
+
             // Win conditions
 
             // Win Condition 0
@@ -61,6 +68,10 @@ checkBoxes.each((i, box) => {
                 } else {
                     result.text("O has Won!");
                 }
+                winningLineXAxis.css({
+                    transform: "scaleX(1)",
+                    top: "16.5%",
+                });
                 displayOverlay();
             }
 
@@ -75,6 +86,10 @@ checkBoxes.each((i, box) => {
                 } else {
                     result.text("O has Won!");
                 }
+                winningLineXAxis.css({
+                    transform: "scaleX(1)",
+                    top: "calc(50%)",
+                });
                 displayOverlay();
             }
 
@@ -89,6 +104,10 @@ checkBoxes.each((i, box) => {
                 } else {
                     result.text("O has Won!");
                 }
+                winningLineXAxis.css({
+                    transform: "scaleX(1)",
+                    top: "83%",
+                });
                 displayOverlay();
             }
 
@@ -103,6 +122,10 @@ checkBoxes.each((i, box) => {
                 } else {
                     result.text("O has Won!");
                 }
+                winningLineYAxis.css({
+                    transform: "scaleY(1)",
+                    left: "16.5%",
+                });
                 displayOverlay();
             }
 
@@ -117,6 +140,10 @@ checkBoxes.each((i, box) => {
                 } else {
                     result.text("O has Won!");
                 }
+                winningLineYAxis.css({
+                    transform: "scaleY(1)",
+                    left: "calc(50% - 1.5px)",
+                });
                 displayOverlay();
             }
 
@@ -131,6 +158,10 @@ checkBoxes.each((i, box) => {
                 } else {
                     result.text("O has Won!");
                 }
+                winningLineYAxis.css({
+                    transform: "scaleY(1)",
+                    left: "82.7%",
+                });
                 displayOverlay();
             }
 
@@ -145,6 +176,10 @@ checkBoxes.each((i, box) => {
                 } else {
                     result.text("O has Won!");
                 }
+                winningLineDiagAxis.css({
+                    transform: "rotate(-45deg)",
+                    opacity: "1",
+                });
                 displayOverlay();
             }
 
@@ -159,6 +194,10 @@ checkBoxes.each((i, box) => {
                 } else {
                     result.text("O has Won!");
                 }
+                winningLineDiagAxis.css({
+                    transform: "rotate(45deg)",
+                    opacity: "1",
+                });
                 displayOverlay();
             }
         }
@@ -203,4 +242,7 @@ const reset = () => {
     setTimeout(() => {
         overlayBackground.hide();
     }, 500);
+    winningLineYAxis.css("transform", "scaleY(0)");
+    winningLineXAxis.css("transform", "scaleX(0)");
+    winningLineDiagAxis.css("opacity", "0");
 };
